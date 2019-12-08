@@ -11,10 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/test',function(){
+    $users=DB::select('select * from course where Department = "環境生物與漁業科學學系"');
+    
+    return $users;
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/logout', function(){
+    if(Auth::check())   Auth::logout();
+    return redirect('/');
+});

@@ -1,82 +1,98 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>推課海大 - @yield('title')</title>
 
-    <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/b88fff3b41.js" crossorigin="anonymous"></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <!-- Fonts -->
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <!-- Styles -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+        <style type = "text/css">
+            body {
+                padding-top: 0px;
+                background-color: #00324e;
+                height: 100vh;
+            }
+
+            #header {
+                min-height: 10%;
+                background-color:#006aa6;
+            }
+
+            #content {
+                max-height: 90%;
+            }
+
+            
+
+        </style>
+
+        @yield('header')
+
+    </head>
+    <body>
+        <nav id="header" class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <a class="navbar-brand text-white font-weight-bold" href="{{url('/')}}">推課海大</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Nav" aria-controls="Nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse" id='Nav'>
+                    <form class="form-inline required input-group ml-md-3" style="width:50%;">
+                        <div class="input-group-prepend">
+                        <select class="form-control" name="way">
+                            <option class="font-weight-bold" value="courseTitle">課名</option>
+                            <option class="font-weight-bold" value="courseNo">課號</option>
+                            <option class="font-weight-bold" value="department">開課單位</option>
+                            <option class="font-weight-bold" value="instructor">授課老師</option>
+                        </select>
+                        </div>
+                        <input class="form-control" placeholder="請輸入關鍵字" type="search">
+                        <button class="btn btn-secondary" type="submit"><i class="fas fa-search"></i></button>
+                    </form> 
 
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        @if (Auth::check())
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{Auth::user()->name}}
+                            </a> 
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="">個人設定</a>
+                                <a class="dropdown-item" href="{{route('logout')}}">登出</a>
+                            </div>
+                        </li>
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{route('login')}}">登入</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{route('register')}}">註冊</a>
+                        </li>
+                        @endif
                     </ul>
                 </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
+            </nav>
+        </div>
+            
+        <div class="container">
             @yield('content')
-        </main>
-    </div>
-</body>
+        </div>
+    </body>
 </html>
