@@ -20,6 +20,8 @@ Route::get('/test',function(){
     return $users;
 });
 
+Route::get('/home', 'HomeController@index');
+
 Auth::routes();
 
 
