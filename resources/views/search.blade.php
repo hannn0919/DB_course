@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+搜尋頁
+@endsection
+@section('header')
+
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -99,7 +105,7 @@
 
                     @foreach($array_data['exps'] as $key => $d)
                             <div class = "card" style="width: 100%;height: auto;">
-                                <div class="card-header"><a herf = "#"><h3>{{$d->CourseNo}}</h3></a><br></div> 
+                                <div class="card-header"><a href="#"><h3>{{$d->CourseNo}}</h3></a><br></div> 
                                 <div class = "card-body">
                                     <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">{{$d->Additional}}</p>
                                     <p style="color: black; text-decoration:none;float:right">{{$d->Account}}</p>
