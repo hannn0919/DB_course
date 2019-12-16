@@ -30,4 +30,15 @@ class HomeController extends Controller
                     'exps' => $exps);
         return view('home', ['array_data' => $data]);
     }
+
+    public function search()
+    {
+        $departments = DB::table('course')->select('Department')->distinct()->get();
+        $exps = DB::table('exp')->get();
+        $comments = DB::table('comment')->get();
+        $data = array('departments' => $departments,
+                    'exps' => $exps,
+                    'comments'=>$comments);
+        return view('search', ['array_data' => $data]);
+    }
 }

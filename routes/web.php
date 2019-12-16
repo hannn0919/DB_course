@@ -22,6 +22,8 @@ Route::get('/test',function(){
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/search', 'HomeController@search');
+
 Auth::routes();
 
 
