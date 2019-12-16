@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Foundation\Auth\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,12 +22,29 @@ Route::get('/test',function(){
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/search', 'HomeController@search');
+Route::get('/exp/expNo',function(){
+       
+})->name('expNo');
+
+Route::get('/comment/{comment?}',function($comment){
+    return $comment;
+});
 
 Auth::routes();
-
 
 Route::get('/logout', function(){
     if(Auth::check())   Auth::logout();
     return redirect('/');
+});
+
+Route::get('/personal','Controller@personal');
+
+Route::get('/addExp','Controller@addExp');
+
+Route::post('/search',function(){
+    $search = Request::get ( 'search' );
+    $user = User::where('name','LIKE','%'.$search.'%')->orWhere('email','LIKE','%'.$search.'%')->get();
+    if(count($user) > 0)
+        return view('search')->withDetails($user)->withQuery ( $search );
+    else return view ('search')->withMessage('No Details found. Try to search again !');
 });

@@ -54,7 +54,8 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id='Nav'>
-                    <form class="form-inline required input-group ml-md-3" style="width:50%;">
+                    <form class="form-inline required input-group ml-md-3" style="width:50%;" action="/search" method="POST" role="search">
+                        {{ csrf_field() }}
                         <div class="input-group-prepend">
                         <select class="form-control" name="way">
                             <option class="font-weight-bold" value="courseTitle">課名</option>
@@ -63,7 +64,7 @@
                             <option class="font-weight-bold" value="instructor">授課老師</option>
                         </select>
                         </div>
-                        <input class="form-control" placeholder="請輸入關鍵字" type="search">
+                        <input class="form-control" placeholder="請輸入關鍵字" name="search" type="search">
                         <button class="btn btn-secondary" type="submit"><i class="fas fa-search"></i></button>
                     </form> 
 
@@ -74,7 +75,7 @@
                                 {{Auth::user()->name}}
                             </a> 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">個人設定</a>
+                                <a class="dropdown-item" href="{{url('personal')}}">個人設定</a>
                                 <a class="dropdown-item" href="{{route('logout')}}">登出</a>
                             </div>
                         </li>

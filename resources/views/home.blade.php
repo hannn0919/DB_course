@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+首頁
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -27,12 +29,12 @@
                 </ul>
             </div>
         </div>
-        <div class = "col-md-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div class = "col-md-8 col-lg-8 col-md-8 col-sm-8 col-xs-12 h-100" >
             <br>
-            <div class="card" >
+            <div class="card" style ="height:100%;" >
                 <div class="card-header bg-white font-weight-bold" style="height: auto;">心得
                 </div>
-                <div class="card-body" style = "max-height:552px;overflow:scroll;" >
+                <div class="card-body overflow-scroll" >
                     <div class = "card" style="width: 100%;height: auto;">
                         <div class="card-header"><a href="#"><h3>B570132V 程式設計(二)實習</h3></a><br></div> 
                         <div class = "card-body" >
@@ -99,13 +101,13 @@
 
                     @foreach($array_data['exps'] as $key => $d)
                             <div class = "card" style="width: 100%;height: auto;">
-                                <div class="card-header"><a herf = "#"><h3>{{$d->CourseNo}}</h3></a><br></div> 
+                            <div class="card-header"><a href="#"><h3>{{$d->CourseNo}}</h3></a><br></div>
                                 <div class = "card-body">
                                     <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">{{$d->Additional}}</p>
                                     <p style="color: black; text-decoration:none;float:right">{{$d->Account}}</p>
                                 </div>
                             </div>
-                        @endforeach
+                        @endforeach 
 
                 </div>
             </div>
