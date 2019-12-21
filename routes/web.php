@@ -41,10 +41,8 @@ Route::get('/personal','Controller@personal');
 
 Route::get('/addExp','Controller@addExp');
 
-Route::post('/search',function(){
-    $search = Request::get ( 'search' );
-    $user = User::where('name','LIKE','%'.$search.'%')->orWhere('email','LIKE','%'.$search.'%')->get();
-    if(count($user) > 0)
-        return view('search')->withDetails($user)->withQuery ( $search );
-    else return view ('search')->withMessage('No Details found. Try to search again !');
-});
+Route::post('/search','SearchController');
+/*Route:get('/search',[
+    'uses'=>'SearchController',
+    'as'=>'search'
+]);*/
