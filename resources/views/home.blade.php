@@ -32,65 +32,10 @@
         <div class = "col-md-8 col-lg-8 col-md-8 col-sm-8 col-xs-12 h-100" >
             <br>
             <div class="card" style ="height:100%;" >
-                <div class="card-header bg-white font-weight-bold" style="height: auto;">心得
+                <div class="card-header bg-white font-weight-bold" style="height: auto;">課程
                 </div>
                 <div class="card-body overflow-scroll" >
-                    <div class = "card" style="width: 100%;height: auto;">
-                        <div class="card-header"><a href="#"><h3>B570132V 程式設計(二)實習</h3></a><br></div> 
-                        <div class = "card-body" >
-                            <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">這是一堂很複雜的課，測試測試測試測試測試測試測試測試。</p>
-                            <p style=" color: black; text-decoration:none;float:right">王瑋</p>
-                        </div>
-                    </div>
-                    <div class = "card" style="width: 100%;height: auto;">
-                        <div class="card-header"><a href="#"><h3>B570132V 程式設計(二)實習</h3></a><br></div> 
-                        <div class = "card-body">
-                            <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">這是一堂很複雜的課，測試測試測試測試測試測試測試測試。</p>
-                            <p style=" color: black; text-decoration:none;float:right">王瑋</p>
-                        </div>
-                    </div>
-                    <div class = "card" style="width: 100%;height: auto;">
-                        <div class="card-header"><a href="#"><h3>B570132V 程式設計(二)實習</h3></a><br></div> 
-                        <div class = "card-body">
-                            <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">這是一堂很複雜的課，測試測試測試測試測試測試測試測試。</p>
-                            <p style=" color: black; text-decoration:none;float:right">王瑋</p>
-                        </div>
-                    </div>
-                    <div class = "card" style="width: 100%;height: auto;">
-                        <div class="card-header"><a href="#"><h3>B570132V 程式設計(二)實習</h3></a><br></div> 
-                        <div class = "card-body">
-                            <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">這是一堂很複雜的課，測試測試測試測試測試測試測試測試。</p>
-                            <p style=" color: black; text-decoration:none;float:right">王瑋</p>
-                        </div>
-                    </div>
-                    <div class = "card" style="width: 100%;height: auto;">
-                        <div class="card-header"><a href="#"><h3>B570132V 程式設計(二)實習</h3></a><br></div> 
-                        <div class = "card-body">
-                            <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">這是一堂很複雜的課，測試測試測試測試測試測試測試測試。</p>
-                            <p style=" color: black; text-decoration:none;float:right">王瑋</p>
-                        </div>
-                    </div>
-                    <div class = "card" style="width: 100%;height: auto;">
-                        <div class="card-header"><a href="#"><h3>B570132V 程式設計(二)實習</h3></a><br></div> 
-                        <div class = "card-body">
-                            <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">這是一堂很複雜的課，測試測試測試測試測試測試測試測試。</p>
-                            <p style=" color: black; text-decoration:none;float:right">王瑋</p>
-                        </div>
-                    </div>
-                    <div class = "card" style="width: 100%;height: auto;">
-                        <div class="card-header"><a href="#"><h3>B570132V 程式設計(二)實習</h3></a><br></div> 
-                        <div class = "card-body">
-                            <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">這是一堂很複雜的課，測試測試測試測試測試測試測試測試。</p>
-                            <p style=" color: black; text-decoration:none;float:right">王瑋</p>
-                        </div>
-                    </div>
-                    <div class = "card" style="width: 100%;height: auto;">
-                        <div class="card-header"><a href="#"><h3>B570132V 程式設計(二)實習</h3></a><br></div> 
-                        <div class = "card-body">
-                            <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">這是一堂很複雜的課，測試測試測試測試測試測試測試測試。</p>
-                            <p style=" color: black; text-decoration:none;float:right">王瑋</p>
-                        </div>
-                    </div>
+                    
                     <div class = "card" style="width: 100%;height: auto;">
                         <div class="card-header"><a href="#"><h3>B570132V 程式設計(二)實習</h3></a><br></div> 
                         <div class = "card-body">
@@ -99,16 +44,44 @@
                         </div>
                     </div>
 
-                    @foreach($array_data['exps'] as $key => $d)
-                            <div class = "card" style="width: 100%;height: auto;">
-                            <div class="card-header"><a href="#"><h3>{{$d->CourseNo}}</h3></a><br></div>
-                                <div class = "card-body">
-                                    <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">{{$d->Additional}}</p>
-                                    <p style="color: black; text-decoration:none;float:right">{{$d->Account}}</p>
+                    @foreach($array_data['course'] as $key => $d)
+                        <div class = "card" style="width: 100%;height: auto;">
+                        <div class="card-header">
+                            <a href="#"><h3>
+                                <div style = "display:inline;">{{$d->CourseNo}}</div>
+                                <div style = "display:inline;float:right;">{{$d->CourseTitle}}<div>
+                            </h3></a>
+                        </div>
+                            <div class = "card-body">
+                                <div id = "CourseType" class = "col-md-4"style="display:inline;color: black; text-decoration:none;">
+                                @switch($d->Type)
+                                    @case ("1")
+                                        必修
+                                        @break;
+                                    @case ("2")
+                                        選修
+                                        @break;
+                                    @case ("3")
+                                        通識
+                                        @break;
+                                    @case ("4")
+                                        體育
+                                        @break;
+                                    @case ("5")
+                                        語文
+                                        @break;
+                                    @case ("6")
+                                        其他
+                                        @break;
+                                    @default
+                                        something got wrong
+                                @endswitch
                                 </div>
+                                <div class = "col-md-4"style="display:inline;color: black; text-decoration:none;">{{$d->Instructor}}</div>
+                                <div class = "col-md-4"style="display:inline;color: black; text-decoration:none;">{{$d->Department}}</div>
                             </div>
-                        @endforeach 
-
+                        </div>
+                    @endforeach 
                 </div>
             </div>
         </div>

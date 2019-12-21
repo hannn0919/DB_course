@@ -25,9 +25,9 @@ class HomeController extends Controller
     public function index()
     {
         $departments = DB::table('course')->select('Department')->distinct()->get();
-        $exps = DB::table('exp')->get();
+        $course = DB::table('course')->get();
         $data = array('departments' => $departments,
-                    'exps' => $exps);
+                    'course' => $course);
         return view('home', ['array_data' => $data]);
     }
 
