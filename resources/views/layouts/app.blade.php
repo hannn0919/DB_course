@@ -75,7 +75,7 @@
                                 {{Auth::user()->name}}
                             </a> 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{url('personal')}}">個人設定</a>
+                                <a class="dropdown-item" href="/personal/{{Auth::user()->name}}">個人設定</a>
                                 <a class="dropdown-item" href="{{route('logout')}}">登出</a>
                             </div>
                         </li>

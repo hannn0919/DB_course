@@ -4,21 +4,7 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12">
-            <br>
-             <div>
-                <ul class="list-group">
-                <span style ="color:white;">系所</span>
-                <li><a href = "#" style= "overflow: hidden;">
-                    資工系
-                        </a></li>
-                </ul>
-                <ul class="list-group"><a href="#" style ="color:white;">通識</a>
-                </ul>
-                <ul class="list-group"><a href="#" style ="color:white;">體育</a>
-                </ul>
-            </div>
-        </div>
+        @include('layouts.sidebar')
         <div class = "col-md-8 col-lg-8 col-sm-8 col-xs-12">
             <br>
             <div class="card" style="height:85vh;">
