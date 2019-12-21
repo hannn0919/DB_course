@@ -37,19 +37,17 @@ Route::get('/logout', function(){
     return redirect('/');
 });
 
-Route::get('/personal/{name}','Controller@personal');
+Route::get('/personal/{name}','Controller@personal')->name('personal.show');
+//$url=route('personal.show',['Hannn'=>$name]);
 
 Route::get('/addExp','Controller@addExp');
 
-Route::POST('/search','SearchController@index')->name('search');
+Route::post('/search','SearchController@index')->name('search');
 /*Route:get('/search',[
     'uses'=>'SearchController',
     'as'=>'search'
 ]);*/
 
-Route::get('/search/資工系','SearchController@one')->name('search/資工系');
-Route::get('/search/通識','SearchController@two')->name('search/通識');
-Route::get('/search/體育','SearchController@three')->name('search/體育');
-Route::get('/search/語文','SearchController@four')->name('search/語文');
+Route::get('/search/{name}/{type}','SearchController@categories')->name('分類');
 
 Route::get('/course/{courseNo}','Controller@course')->name('course');

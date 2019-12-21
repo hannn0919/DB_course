@@ -58,10 +58,10 @@
                         {{ csrf_field() }}
                         <div class="input-group-prepend">
                         <select class="form-control" name="way">
-                            <option class="font-weight-bold" value="courseTitle">課名</option>
-                            <option class="font-weight-bold" value="courseNo">課號</option>
-                            <option class="font-weight-bold" value="department">開課單位</option>
-                            <option class="font-weight-bold" value="instructor">授課老師</option>
+                            <option class="font-weight-bold" value="CourseTitle">課名</option>
+                            <option class="font-weight-bold" value="CourseNo">課號</option>
+                            <option class="font-weight-bold" value="Department">開課單位</option>
+                            <option class="font-weight-bold" value="Instructor">授課老師</option>
                         </select>
                         </div>
                         <input class="form-control" placeholder="請輸入關鍵字" name="search" type="search">
@@ -75,7 +75,7 @@
                                 {{Auth::user()->name}}
                             </a> 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/personal/{{Auth::user()->name}}">個人設定</a>
+                                <a class="dropdown-item" href="{{route('personal.show',@Auth::user()->name)}}">個人設定</a>
                                 <a class="dropdown-item" href="{{route('logout')}}">登出</a>
                             </div>
                         </li>
