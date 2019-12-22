@@ -17,7 +17,7 @@
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -27,6 +27,7 @@
                 padding-top: 0px;
                 background-color: #00324e;
                 height: 100vh;
+                font-family: 'Noto Sans TC', sans-serif;
             }
 
             #header {
