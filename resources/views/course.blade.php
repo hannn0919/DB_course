@@ -121,6 +121,7 @@
         <div class = "h-100 col-md-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
             <br>
                 <div class="tabs">
+                    @foreach($array_data['Course'] as $k => $c)
                     <div class="tab-button-outer">
                         <ul id="tab-button">
                             <li><a href="#tab01">心得</a></li>
@@ -133,12 +134,12 @@
                             <option value="#tab02">問題</option>
                         </select>
                     </div>
-
+                    
                     <div id="tab01" class="tab-contents overflow-scroll" style = "max-height:552px;overflow-y:scroll;" >
                     
                             @foreach($array_data['exps'] as $key => $d)
                                 <div class = "card" style="width: 100%;height: auto;">
-                                    <div class="card-header"><a href="#"><h3>{{$d->CourseNo}}</h3></a><br></div> 
+                                    <div class="card-header"><a href="#"><h3>{{$d->CourseNo}} {{$c->CourseTitle}}</h3></a><br></div> 
                                     <div class = "card-body">
                                         <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">{{$d->Additional}}</p>
                                         <p style="color: black; text-decoration:none;float:right">{{$d->Account}}</p>
@@ -150,7 +151,7 @@
                     <div id="tab02" class="tab-contents" style = "max-height:552px;overflow-y:scroll;">                  
                             @foreach($array_data['comments'] as $key => $d)
                                 <div class = "card" style="width: 100%;height: auto;">
-                                    <div class="card-header"><a href="#"><h3>{{$d->CommentNo}}  {{$d->CourseNo}}</h3></a><br></div> 
+                                    <div class="card-header"><a href="#"><h3>{{$d->CommentNo}}  {{$d->CourseNo}} {{$c->CourseTitle}}</h3></a><br></div> 
                                     <div class = "card-body">
                                         <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">{{$d->Comment}}</p>
                                         <p style="color: black; text-decoration:none;float:right">{{$d->Account}}</p>
@@ -158,6 +159,7 @@
                                 </div>
                             @endforeach
                     </div>
+                    @endforeach
                 </div>
             
         </div>

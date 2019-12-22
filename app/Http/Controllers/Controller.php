@@ -36,10 +36,11 @@ class Controller extends BaseController
 */
     public function course($courseNo)
     {
-        $departments = DB::table('course')->select('Department')->distinct()->get();
+        $Course = DB::select('select course.* from course where course.CourseNo="'.$courseNo.'"');
         $exps = DB::select('select distinct exp.* from exp join course on exp.CourseNo="'.$courseNo.'"');
         $comments = DB::select('select distinct comment.* from comment join course on comment.CourseNo="'.$courseNo.'"');
         $data = array(
+                    'Course' => $Course,
                     'CourseNo' => $courseNo,
                     'exps' => $exps,
                     'comments'=>$comments);
