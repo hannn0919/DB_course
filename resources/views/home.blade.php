@@ -8,7 +8,7 @@
         <div class = "col-md-8 col-lg-8 col-sm-8 col-xs-12">
             <br>
             <div class="card" style="height:85vh;">
-                <div class="card-header bg-white font-weight-bold" style="height: auto;">課程清單
+                <div class="card-header bg-white font-weight-bold text-center" style="height: auto;">課程清單
                 </div>
                 <div class="card-body overflow-auto" >
                     
