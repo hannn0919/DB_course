@@ -8,6 +8,9 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use DB;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class Controller extends BaseController
 {
@@ -22,18 +25,23 @@ class Controller extends BaseController
                 );
         return view('personal', ['name'=>$name,'array_data' => $data]);
     }
-/*
-    public function search()
+
+    public function resetPassword(Request $request)
     {
-        $departments = DB::table('course')->select('Department')->distinct()->get();
-        $exps = DB::table('exp')->get();
-        $comments = DB::table('comment')->get();
-        $data = array('departments' => $departments,
-                    'exps' => $exps,
-                    'comments'=>$comments);
-        return view('search', ['array_data' => $data]);
+        $params = $request -> all();
+        $user = Auth::user();
+        
+        if($params['newPassword'] == $params['confirmPassword']){
+            if(Hash::check($params['oldPassword'], $user -> password)){
+                $user -> password = Hash::make($params['newPassword']);
+                $user -> setRememberToken(Str::random(60));
+                $user -> save();
+            }
+            else return 'aaaaaa';
+        }
+        else return 'bbbbbbbbb';
     }
-*/
+
     public function course($courseNo)
     {
         $Course = DB::select('select course.* from course where course.CourseNo="'.$courseNo.'"');

@@ -12,23 +12,24 @@
 			<div class="card" style="border-color:#00324e;">
 				<div class="card-header text-center text-white" style="background-color:#00324e;">密碼設定</div>
 				<div class="card-body" style="background-color:#dddddd;">
-					<form>
+					<form action="{{ route('resetPassword', @Auth::user()->name) }}" method="POST">
+						{{ csrf_field() }}
 						<div class="form-group row">
-							<label for="oldpassword" class="col-sm-2 col-form-label">輸入舊密碼</label>
+							<label for="oldPassword" class="col-sm-2 col-form-label">輸入舊密碼</label>
 							<div class="col-sm-10">
-								<input type="password" class="form-control" id="oldpassword"  required>
+								<input type="password" class="form-control" name="oldPassword"  required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="newPassword" class="col-sm-2 col-form-label">輸入新密碼</label>
 							<div class="col-sm-10">
-								<input type="password" class="form-control" id="newPassword"  required>
+								<input type="password" class="form-control" name="newPassword"  required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="confirmPassword" class="col-sm-2 col-form-label">確認新密碼</label>
 							<div class="col-sm-10">
-								<input type="password" class="form-control" id="confirmPassword"  required>
+								<input type="password" class="form-control" name="confirmPassword"  required>
 							</div>
 						</div>
 						<div class="text-right">

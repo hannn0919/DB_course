@@ -13,6 +13,8 @@ Route::get('/logout', function(){
 
 Route::get('/personal/{name}','Controller@personal')->name('personal.show');
 
+Route::post('/personal/{name}/resetPassword','Controller@resetPassword')->name('resetPassword');
+
 Route::post('/search','SearchController@index')->name('search');
 Route::get('/search/{name}/{type}','SearchController@categories')->name('分類');
 
