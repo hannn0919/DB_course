@@ -8,41 +8,42 @@
 		<div class="card-body" style="overflow: scroll;">
 
 			<small class="text-danger">*必填欄位</small>
-			<form class="text-right">
+			<form method='post' action="{{route('exp')}}" class="text-right">
+				{{ csrf_field() }}
 				<div class="form-group row">
 					<label for="courseNo" class="col-sm-2 col-form-label">* 課號</label>
 					<div class="col-sm-10">
-					<input type="text" class="form-control" id="courseNo" required>
+					<input type="text" class="form-control" name="CourseNo" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="courseTitle" class="col-sm-2 col-form-label">* 課程名稱</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="courseTitle" required>
+						<input type="text" class="form-control" name="CourseTitle" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="department" class="col-sm-2 col-form-label">* 開課系所</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="department" required>
+						<input type="text" class="form-control" name="Department" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="instructor" class="col-sm-2 col-form-label">* 授課老師</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="instructor" required>
+						<input type="text" class="form-control"name="Instructor" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="semester" class="col-sm-2 col-form-label">* 開課年度</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="semester" required>
+						<input type="text" class="form-control" name="Semester" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="score" class="col-sm-2 col-form-label">* 推薦指數</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="score" required>
+						<input type="text" class="form-control" name="Score" required>
 					</div>
 				</div>
 
@@ -52,19 +53,19 @@
 				<div class="form-group row">
 					<label for="evaluation" class="col-sm-2 col-form-label">評分方式</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" id="evaluation"></textarea>
+						<textarea type="text" class="form-control" name="Evaluation"></textarea>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="outline" class="col-sm-2 col-form-label">考試與作業</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" id="outline"></textarea>
+						<textarea type="text" class="form-control" name="Outline"></textarea>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="additional" class="col-sm-2 col-form-label">其他</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" id="additional" rows="5"></textarea>
+						<textarea type="text" class="form-control" name="Additional" rows="5"></textarea>
 					</div>
 				</div>
 
