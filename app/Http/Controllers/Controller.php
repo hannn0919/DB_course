@@ -36,10 +36,11 @@ class Controller extends BaseController
                 $user -> password = Hash::make($params['newPassword']);
                 $user -> setRememberToken(Str::random(60));
                 $user -> save();
+                return redirect()->back()->with('alert', '密碼已變更!');
             }
-            else return 'aaaaaa';
+            else return redirect()->back()->with('alert', '舊密碼錯誤!');
         }
-        else return 'bbbbbbbbb';
+        else return redirect()->back()->with('alert', '新密碼輸入不一致!');
     }
 
     public function course($courseNo)

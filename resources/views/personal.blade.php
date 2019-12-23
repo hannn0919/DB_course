@@ -58,7 +58,7 @@
 								<th scope="row">{{$d->CourseTitle}}</th>
 								<td>{{$d->expNo}}</td>
 								<td>
-                                  <a href="{{route('exp.update',$d->expNo)}}">編輯</a>
+                                  <a href="">編輯</a> / 
                                   <a href="{{route('exp.destroy',$d->expNo)}}">刪除</a>
                                 </td>
 							</tr>
@@ -88,8 +88,8 @@
 								<th scope="row">{{$d->CourseTitle}}</th>
 								<td>{{$d->CommentNo}}</td>
 								<td>
-                                  <a>編輯</a>/
-                                  <a>刪除</a>
+                                  <a>編輯</a> /
+                                  <a href="{{route('exp.destroy',$d->CommentNo)}}">刪除</a>
                                 </td>
 							</tr>
                             @endforeach
@@ -101,4 +101,10 @@
 
 		</div>
 	</div>
+
+	<script>
+		var msg = '{{Session::get('alert')}}';
+		var exist = '{{Session::has('alert')}}';
+		if(exist) alert(msg);
+  	</script>
 @endsection
