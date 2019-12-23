@@ -12,9 +12,9 @@ class SearchController extends Controller
         $search = $request->search;
         $way = $request->way ;
          $courses=DB::table('course')->select('*')->where($way,'LIKE','%'.$search.'%')->get();
-         if(count($courses) > 0)
-             return view('search')->withDetails($courses)->withQuery ( $search );
-         else return view ('search')->withMessage('No Details found. Try to search again !');    
+         
+        return view('search')->withDetails($courses);
+         //else return view ('search')->withMessage('No Details found. Try to search again !');    
     }
 
     public function categories($search,$type){
