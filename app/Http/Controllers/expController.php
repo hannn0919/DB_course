@@ -46,7 +46,8 @@ class expController extends Controller
      */
     public function show($id)
     {
-        $post=exp::where('expNo','=',1)->get();
+        $post=exp::where('expNo','=',$id)->get();
+        return view('expShow',['expNo'=>$post]);
     }
 
     /**

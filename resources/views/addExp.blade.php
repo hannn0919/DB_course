@@ -8,7 +8,7 @@
 		<div class="card-body" style="overflow: scroll;">
 
 			<small class="text-danger">*必填欄位</small>
-			<form method='post' action="{{route('exp')}}" class="text-right">
+			<form method='post' action="{{route('exp.store')}}" class="text-right">
 				{{ csrf_field() }}
 				<div class="form-group row">
 					<label for="courseNo" class="col-sm-2 col-form-label">* 課號</label>
