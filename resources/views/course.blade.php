@@ -121,9 +121,10 @@
     @include('layouts.sidebar')
         <div class = "h-100 col-md-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
             <br>
-                <h3 class="bg-white">課程</h3>
+             @foreach($array_data['Course'] as $k => $c)
+                <h3 class="bg-white">課程{{$c->CourseTitle}}</h3>
                 <div class="tabs">
-                    @foreach($array_data['Course'] as $k => $c)
+                   
                     <div class="tab-button-outer">
                         <ul id="tab-button">
                             <li><a href="#tab01">心得</a></li>
@@ -161,9 +162,9 @@
                                 </div>
                             @endforeach
                     </div>
-                    @endforeach
+                    
                 </div>
-            
+            @endforeach
         </div>
     </div>
 </div>
