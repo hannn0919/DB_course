@@ -105,6 +105,25 @@
 	<script>
 		var msg = '{{Session::get('alert')}}';
 		var exist = '{{Session::has('alert')}}';
-		if(exist) alert(msg);
+		if(exist) {
+			let type = 0;
+			if(msg == '密碼已變更!') type = 1
+			if(type){
+				Swal.fire({
+					title: msg,
+					icon: 'success',
+					showConfirmButton: false,
+					timer: 1500
+				})
+			}
+			else{
+				Swal.fire({
+					title: msg,
+					icon: 'error',
+					showConfirmButton: false,
+					timer: 1500
+				})
+			}
+		};
   	</script>
 @endsection
