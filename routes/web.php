@@ -21,3 +21,4 @@ Route::get('/search/{name}/{type}','SearchController@categories')->name('分類'
 Route::get('/course/{courseNo}','Controller@course')->name('course');
 
 Route::resource('exp','expController');
+Route::resource('comment','commentController');

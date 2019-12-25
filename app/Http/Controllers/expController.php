@@ -37,7 +37,8 @@ class expController extends Controller
         $post->Outline=$request->Outline;
         $post->Additional=$request->Additional;
         $post->save();
-        return '';
+        $ExpNo=$post->ExpNo;
+        return view('showExp',['ExpNo'=>$ExpNo]);
     }
 
     /**
@@ -48,8 +49,8 @@ class expController extends Controller
      */
     public function show($id)
     {
-        $post=exp::where('expNo','=',$id)->get();
-        return view('expShow',['expNo'=>$post]);
+        $ExpNo=exp::where('ExpNo','=',$id)->get();
+        return view('showExp',['expNo'=>$ExpNo]);
     }
 
     /**
@@ -67,8 +68,8 @@ class expController extends Controller
         $post->Outline=$request->Outline;
         $post->Additional=$request->Additional;
         $post->save();
-        return '';
-
+        $ExpNo=$post->ExpNo;
+        return view('showExp',['ExpNo'=>$ExpNo]);
     }
 
     /**
