@@ -8,5 +8,6 @@ class exp extends Model
 {
     protected $table="exp";
     public $timestamps = false;
+    protected $primaryKey="ExpNo";
 
 }

@@ -58,8 +58,13 @@
 								<th scope="row">{{$d->CourseTitle}}</th>
 								<td>{{$d->expNo}}</td>
 								<td>
-                                  <a href="{{route('editExp',$d->expNo)}}">編輯</a> / 
-                                  <a href="{{route('exp.destroy',$d->expNo)}}">刪除</a>
+								  <a href="{{route('editExp',$d->expNo)}}">編輯</a> 
+								  <form action="{{ route('exp.destroy', $d->expNo) }}" method="POST">
+    								@csrf
+									@method('DELETE')
+    								<button type="submit">Delete User</button>
+								  </form>
+					
                                 </td>
 							</tr>
                             @endforeach
@@ -89,7 +94,7 @@
 								<td>{{$d->CommentNo}}</td>
 								<td>
                                   <a>編輯</a> /
-                                  <a href="{{route('exp.destroy',$d->CommentNo)}}">刪除</a>
+                                  <a href="{{route('exp.destroy',$d->CommentNo)}}" method="delete">刪除</a>
                                 </td>
 							</tr>
                             @endforeach

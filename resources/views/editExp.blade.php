@@ -10,6 +10,7 @@
 
 			<form method='post' action="{{route('exp.update', $exp[0]->ExpNo)}}" class="text-right">
 				{{ csrf_field() }}
+				@method('PATCH')
 				<div class="form-group row">
 					<label for="courseNo" class="col-sm-2 col-form-label">* 課號</label>
 					<div class="col-sm-10">
