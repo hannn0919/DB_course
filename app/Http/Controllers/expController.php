@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Validator;
 use App\exp;
 use Auth;
 use Illuminate\Http\Request;
-
+use DB;
 class expController extends Controller
 {
     /**
@@ -13,9 +13,11 @@ class expController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('addExp');
+        $courseNo = $request->courseNo;
+        $Course = DB::select('select course.* from course where course.CourseNo="'.$courseNo.'"');
+        return view('addExp', ['Course' => $Course]);
     }
 
     /**

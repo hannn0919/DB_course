@@ -14,31 +14,31 @@
 				<div class="form-group row">
 					<label for="courseNo" class="col-sm-2 col-form-label">* 課號</label>
 					<div class="col-sm-10">
-					<input type="text" class="form-control" name="CourseNo" required>
+					<input type="text" class="form-control" name="CourseNo" value = "{{$Course[0]->CourseNo}}" disabled>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="courseTitle" class="col-sm-2 col-form-label">* 課程名稱</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="CourseTitle" required>
+						<input type="text" class="form-control" name="CourseTitle" value = "{{$Course[0]->CourseTitle}}" disabled>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="department" class="col-sm-2 col-form-label">* 開課系所</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="Department" required>
+						<input type="text" class="form-control" name="Department" value = "{{$Course[0]->Department}}" disabled>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="instructor" class="col-sm-2 col-form-label">* 授課老師</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control"name="Instructor" required>
+						<input type="text" class="form-control"name="Instructor" value = "{{$Course[0]->Instructor}}" disabled>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="semester" class="col-sm-2 col-form-label">* 開課年度</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="Semester" required>
+						<input type="text" class="form-control" name="Semester" value = "1072" disabled>
 					</div>
 				</div>
 				<div class="form-group row">
