@@ -37,17 +37,7 @@ class expController extends Controller
         $post->Outline=$request->Outline;
         $post->Additional=$request->Additional;
         $post->save();
-        // $id=$post->ExpNo;
-        //$exp=exp::where('ExpNo','=',$post->ExpNo)->get();
-        //$course=DB::select('select course.* from course where course.CourseNo="'.$exp[0]->CourseNo.'"');
-        //return view('showExp',['exp'=>$exp,'course'=>$course]);
-        $name =Auth::user()->name;
-        $exp = DB::select('select exp.expNo,course.CourseTitle from exp join course on exp.Account="'. Auth::user()->email.'" and exp.CourseNo=course.CourseNo');
-        $comment = DB::select('select comment.CommentNo,course.CourseTitle from comment join course on comment.Account="'. Auth::user()->email.'" and comment.CourseNo=course.CourseNo');
-        $data = array('exp' => $exp,
-                      'comment' => $comment,
-                );
-        return view('personal', ['name'=>$name,'array_data' => $data]);
+        return redirect()->action('Controller@personal',@Auth::user()->name);
     }
 
     /**
@@ -77,7 +67,6 @@ class expController extends Controller
         $post->Evaluation=$request->Evaluation;
         $post->Outline=$request->Outline;
         $post->Additional=$request->Additional;
-        //$post->update($request->all());
         $post->save();
         $exp=exp::where('ExpNo','=',$post->ExpNo)->get();
         $course=DB::select('select course.* from course where course.CourseNo="'.$exp[0]->CourseNo.'"');
@@ -94,6 +83,12 @@ class expController extends Controller
     {
         $post=exp::where('ExpNo','=',$id);
         $post->delete();
-        return redirect()->back();
+        $name =Auth::user()->name;
+        $exp = DB::select('select exp.expNo,course.CourseTitle from exp join course on exp.Account="'. Auth::user()->email.'" and exp.CourseNo=course.CourseNo');
+        $comment = DB::select('select comment.CommentNo,course.CourseTitle from comment join course on comment.Account="'. Auth::user()->email.'" and comment.CourseNo=course.CourseNo');
+        $data = array('exp' => $exp,
+                      'comment' => $comment,
+                );
+        return redirect()->action('Controller@personal',@Auth::user()->name);
     }
 }
