@@ -49,9 +49,9 @@ class expController extends Controller
      */
     public function show($id,$courseNo)
     {
-        $ExpNo=exp::where('ExpNo','=',$id)->get();
+        $exp=exp::where('ExpNo','=',$id)->get();
         $course=DB::select('select course.* from course where course.CourseNo="'.$ExpNo->CourseNo.'"');
-        return view('showExp',['expNo'=>$ExpNo,'course'=>$course]);
+        return view('showExp',['exp'=>$exp,'course'=>$course]);
     }
 
     /**
