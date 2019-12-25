@@ -58,7 +58,7 @@
 								<th scope="row">{{$d->CourseTitle}}</th>
 								<td>{{$d->expNo}}</td>
 								<td>
-                                  <a href="">編輯</a> / 
+                                  <a href="{{route('editExp',$d->expNo)}}">編輯</a> / 
                                   <a href="{{route('exp.destroy',$d->expNo)}}">刪除</a>
                                 </td>
 							</tr>

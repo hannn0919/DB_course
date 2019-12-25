@@ -56,10 +56,11 @@ class Controller extends BaseController
         return view('course', ['array_data' => $data]);
     }
 
-    public function showExp($expNo)
+    public function editExp($expNo)
     {
         $exp = DB::select('select distinct exp.* from exp where exp.expNo="'.$expNo.'"');
-        return view('showExp', ['exp' => $exp]);
+        $course=DB::select('select course.* from course where course.CourseNo="'.$exp[0]->CourseNo.'"');
+        return view('editExp', ['exp' => $exp, 'Course'=>$course]);
     }
   
 }
