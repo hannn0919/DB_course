@@ -47,10 +47,11 @@ class expController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$courseNo)
     {
         $ExpNo=exp::where('ExpNo','=',$id)->get();
-        return view('showExp',['expNo'=>$ExpNo]);
+        $course=DB::select('select course.* from course where course.CourseNo="'.$ExpNo->CourseNo.'"');
+        return view('showExp',['expNo'=>$ExpNo,'course'=>$course]);
     }
 
     /**
