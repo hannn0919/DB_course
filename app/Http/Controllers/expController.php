@@ -37,8 +37,17 @@ class expController extends Controller
         $post->Outline=$request->Outline;
         $post->Additional=$request->Additional;
         $post->save();
-        $ExpNo=$post->ExpNo;
-        return view('showExp',['ExpNo'=>$ExpNo]);
+        // $id=$post->ExpNo;
+        //$exp=exp::where('ExpNo','=',$post->ExpNo)->get();
+        //$course=DB::select('select course.* from course where course.CourseNo="'.$exp[0]->CourseNo.'"');
+        //return view('showExp',['exp'=>$exp,'course'=>$course]);
+        $name =Auth::user()->name;
+        $exp = DB::select('select exp.expNo,course.CourseTitle from exp join course on exp.Account="'. Auth::user()->email.'" and exp.CourseNo=course.CourseNo');
+        $comment = DB::select('select comment.CommentNo,course.CourseTitle from comment join course on comment.Account="'. Auth::user()->email.'" and comment.CourseNo=course.CourseNo');
+        $data = array('exp' => $exp,
+                      'comment' => $comment,
+                );
+        return view('personal', ['name'=>$name,'array_data' => $data]);
     }
 
     /**
@@ -47,10 +56,10 @@ class expController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id,$courseNo)
+    public function show($id)
     {
         $exp=exp::where('ExpNo','=',$id)->get();
-        $course=DB::select('select course.* from course where course.CourseNo="'.$ExpNo->CourseNo.'"');
+        $course=DB::select('select course.* from course where course.CourseNo="'.$exp[0]->CourseNo.'"');
         return view('showExp',['exp'=>$exp,'course'=>$course]);
     }
 
@@ -69,8 +78,9 @@ class expController extends Controller
         $post->Outline=$request->Outline;
         $post->Additional=$request->Additional;
         $post->save();
-        $ExpNo=$post->ExpNo;
-        return view('showExp',['ExpNo'=>$ExpNo]);
+        $exp=exp::where('ExpNo','=',$post->ExpNo)->get();
+        $course=DB::select('select course.* from course where course.CourseNo="'.$exp[0]->CourseNo.'"');
+        return view('showExp',['exp'=>$exp,'course'=>$course]);
     }
 
     /**

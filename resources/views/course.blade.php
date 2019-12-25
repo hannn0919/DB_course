@@ -156,7 +156,7 @@
 										<div class="card-body">
 											<h3>{{$d->Account}}</h3>
 											<p class=" overflow-hidden text-black">{{$d->Additional}}</p>
-											<a class="float-right"href="#">查看更多</a>
+											<a class="float-right"href="{{route('exp.show', $d->ExpNo)}}">查看更多</a>
 										</div>
 									</div>
 								@endforeach

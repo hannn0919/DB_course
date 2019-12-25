@@ -55,5 +55,11 @@ class Controller extends BaseController
                     'comments'=>$comments);
         return view('course', ['array_data' => $data]);
     }
+
+    public function showExp($expNo)
+    {
+        $exp = DB::select('select distinct exp.* from exp where exp.expNo="'.$expNo.'"');
+        return view('showExp', ['exp' => $exp]);
+    }
   
 }
