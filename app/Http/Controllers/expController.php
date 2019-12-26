@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Validator;
 use App\exp;
 use Auth;
 use Illuminate\Http\Request;
@@ -83,12 +82,6 @@ class expController extends Controller
     {
         $post=exp::where('ExpNo','=',$id);
         $post->delete();
-        $name =Auth::user()->name;
-        $exp = DB::select('select exp.expNo,course.CourseTitle from exp join course on exp.Account="'. Auth::user()->email.'" and exp.CourseNo=course.CourseNo');
-        $comment = DB::select('select comment.CommentNo,course.CourseTitle from comment join course on comment.Account="'. Auth::user()->email.'" and comment.CourseNo=course.CourseNo');
-        $data = array('exp' => $exp,
-                      'comment' => $comment,
-                );
         return redirect()->action('Controller@personal',@Auth::user()->name);
     }
 }

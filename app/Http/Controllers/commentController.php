@@ -1,30 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\comment;
 use Illuminate\Http\Request;
 
 class commentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,29 +15,13 @@ class commentController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $post= new comment;
+        $post->CommentNo=comment::max('CommentNo')+1;
+        $post->CourseNo=$request->CourseNo;
+        $post->Account=Auth::user()->email;
+        $post->Comment=$request->Comment;
+        $post->save();
+        return redirect()->action('Controller@personal',@Auth::user()->name);
     }
 
     /**
@@ -68,7 +33,12 @@ class commentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post=comment::find($id);
+        $post->CourseNo=$request->CourseNo;
+        $post->Account=Auth::user()->email;
+        $post->Comment=$request->Comment;
+        $post->save();
+        return redirect()->action('Controller@course',$request->CourseNo);
     }
 
     /**
@@ -79,6 +49,8 @@ class commentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=exp::where('ExpNo','=',$id);
+        $post->delete();
+        return redirect()->action('Controller@personal',@Auth::user()->name);
     }
 }

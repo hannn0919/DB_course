@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class exp extends Model
+class comment extends Model
 {
-    protected $table="exp";
+    protected $table="comment";
     public $timestamps = false;
-    protected $primaryKey="ExpNo";
+    protected $primaryKey="CommentNo";
 }
