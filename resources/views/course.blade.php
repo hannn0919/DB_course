@@ -131,13 +131,10 @@
         <div class = "col-md-8 col-lg-8 col-sm-8 col-xs-12">
             <br>
                 <div class="border border-dark bg-white text-center rounded-top">
-                  <h3 class="d-inline float-left">{{$array_data['Course'][0]->CourseNo}}</h3>
-                  <h3 class="d-inline float-right">{{$array_data['Course'][0]->CourseTitle}}</h3>
-
+                  <h3>{{$array_data['Course'][0]->CourseNo}}      {{$array_data['Course'][0]->CourseTitle}}</h3>
                 </div>
                 <div class="border border-dark bg-white rounded-top">
                   	<div class="tabs">
-                    
 						<div class="tab-button-outer">
 							<ul id="tab-button">
 								<li><a href="#tab01">心得</a></li>
@@ -166,10 +163,19 @@
 						<div id="tab02" class="tab-contents" style = "height:76vh;" >                  
 								@foreach($array_data['comments'] as $key => $d)
 									<div class = "card" style="width: 100%;height: auto;">
-										<div class="card-header"><a href="#"><h3>{{$d->CommentNo}}  {{$d->CourseNo}} {{$array_data['Course'][0]->CourseTitle}}</h3></a></div> 
 										<div class = "card-body">
-											<p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">{{$d->Comment}}</p>
-											<p style="color: black; text-decoration:none;float:right">{{$d->Account}}</p>
+                                            <p style="overflow: hidden; white-space:nowrap; color: black; text-decoration:none;">{{$d->Comment}}</p>
+                                            <p style="color: black; text-decoration:none;float:right">{{$d->Account}}
+                                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{$d->CommentNo}}" aria-expanded="false" aria-controls="{{$d->CommentNo}}">
+                                                    reply
+                                                </button>
+                                            </p>
+                                            <div class="collapse" id="{{$d->CommentNo}}">
+                                            <br>
+                                            @foreach($reply_array[$d->CommentNo] as $r)
+                                                <p> {{$r->Content}}{{$r->Account}}</p>
+                                            @endforeach
+                                            </div>
 										</div>
 									</div>
 								@endforeach

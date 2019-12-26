@@ -48,12 +48,16 @@ class Controller extends BaseController
         $Course = DB::select('select course.* from course where course.CourseNo="'.$courseNo.'"');
         $exps = DB::select('select distinct exp.* from exp join course on exp.CourseNo="'.$courseNo.'"');
         $comments = DB::select('select distinct comment.* from comment join course on comment.CourseNo="'.$courseNo.'"');
+        $comments_array = array();
+        foreach($comments as $k=>$c){
+            $reply_array[$c->CommentNo] = DB::select('select distinct reply.* from reply where reply.CommentNo="'.$c->CommentNo.'"');
+        }
         $data = array(
                     'Course' => $Course,
                     'CourseNo' => $courseNo,
                     'exps' => $exps,
                     'comments'=>$comments);
-        return view('course', ['array_data' => $data]);
+        return view('course', ['array_data' => $data, 'reply_array'=>$reply_array]);
     }
 
     public function editExp($expNo)
