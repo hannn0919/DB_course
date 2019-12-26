@@ -24,7 +24,7 @@
                                 </thead>
                                 <tbody class="bg-white">
                                     @foreach($array_data['course'] as $key => $d)
-                                    <tr onclick="window.location='/course/{{$d->CourseNo}}'">
+                                    <tr onclick="window.location='/course/{{$d->CourseNo}}'" class="pointer">
                                         <th scope="row">{{$d->CourseNo}}</th>
                                         <td>{{$d->CourseTitle}}</td>
                                         <td>{{$d->Instructor}}</td>

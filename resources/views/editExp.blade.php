@@ -5,7 +5,7 @@
 @section('content')
 	<br>
 	<div class="card">
-		<div class="card-header text-center font-weight-bold bg-white" style="border-color:#00324e;">發表心得</div>
+		<div class="card-header text-center font-weight-bold bg-white" style="border-color:#00324e;">編輯心得</div>
 		<div class="card-body" style="overflow: scroll;">
 
 			<form method='post' action="{{route('exp.update', $exp[0]->ExpNo)}}" class="text-right">

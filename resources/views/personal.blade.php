@@ -33,7 +33,7 @@
 							</div>
 						</div>
 						<div class="text-right">
-							<button type="submit" class="btn mb-2 bg-white" style="border-color:#00324e; color:#00324e;">確認變更</button>
+							<button type="submit" class="btn btn-outline-info">確認變更</button>
 						</div>
 					</form>
 				</div>
@@ -43,7 +43,7 @@
 
 			<div class="card" style="border-color:#00324e;">
 				<div class="card-header text-center text-white" style="background-color:#00324e;">心得列表</div>
-				<div class="card-body" style="background-color:#dddddd;">
+				<div class="card-body overflow-auto" style="background-color:#dddddd; height:40vh;">
 					<table class="table table-condensed table-hover text-center">
 						<thead>
 						<tr class="bg-info">
@@ -58,13 +58,12 @@
 								<th scope="row">{{$d->CourseTitle}}</th>
 								<td>{{$d->expNo}}</td>
 								<td>
-								  <a href="{{route('editExp',$d->expNo)}}">編輯</a> 
-								  <form action="{{ route('exp.destroy', $d->expNo) }}" method="POST">
-    								@csrf
-									@method('DELETE')
-    								<button type="submit">Delete User</button>
-								  </form>
-					
+								 	<form action="{{ route('exp.destroy', $d->expNo) }}" method="POST">
+										@csrf
+										@method('DELETE')
+										<a href="{{route('editExp',$d->expNo)}}" class="btn btn-link">編輯</a> /  
+										<button type="submit" class="btn btn-link">刪除</button>
+									</form>
                                 </td>
 							</tr>
                             @endforeach
@@ -77,7 +76,7 @@
 
 			<div class="card" style="border-color:#00324e;">
 				<div class="card-header text-center text-white" style="background-color:#00324e;">問題列表</div>
-				<div class="card-body" style="background-color:#dddddd;">
+				<div class="card-body overflow-auto" style="background-color:#dddddd; height:40vh;">
                     <table class="table table-condensed table-hover text-center">
 						<thead>
 						<tr class="bg-info">
@@ -93,8 +92,12 @@
 								<th scope="row">{{$d->CourseTitle}}</th>
 								<td>{{$d->CommentNo}}</td>
 								<td>
-                                  <a>編輯</a> /
-                                  <a href="{{route('exp.destroy',$d->CommentNo)}}" method="delete">刪除</a>
+									<form action="#" method="POST">
+										@csrf
+										@method('DELETE')
+										<a href="#" class="btn btn-link">編輯</a> /  
+										<button type="submit" class="btn btn-link">刪除</button>
+									</form>
                                 </td>
 							</tr>
                             @endforeach
@@ -108,11 +111,11 @@
 	</div>
 
 	<script>
-		var msg = '{{Session::get('alert')}}';
-		var exist = '{{Session::has('alert')}}';
-		if(exist) {
+		let msg = '{{Session::get('alert')}}';
+		let exist = '{{Session::has('alert')}}';
+		if(exist){
 			let type = 0;
-			if(msg == '密碼已變更!') type = 1
+			if(msg === '密碼已變更!') type = 1
 			if(type){
 				Swal.fire({
 					title: msg,
