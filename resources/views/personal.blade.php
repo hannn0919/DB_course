@@ -61,7 +61,7 @@
 								 	<form action="{{ route('exp.destroy', $d->expNo) }}" method="POST">
 										@csrf
 										@method('DELETE')
-										<a href="{{route('editExp',$d->expNo)}}" class="btn btn-link">編輯</a> /  
+										<a href="{{route('editExp',$d->expNo)}}" class="btn btn-link">編輯</a> 
 										<button type="submit" class="btn btn-link">刪除</button>
 									</form>
                                 </td>
@@ -92,10 +92,10 @@
 								<th scope="row">{{$d->CourseTitle}}</th>
 								<td>{{$d->CommentNo}}</td>
 								<td>
-									<form action="#" method="POST">
+									<form action="{{ route('comment.destroy', $d->CommentNo) }}" method="POST">
 										@csrf
 										@method('DELETE')
-										<a href="#" class="btn btn-link">編輯</a> /  
+										<a href="#" class="btn btn-link">編輯</a> 
 										<button type="submit" class="btn btn-link">刪除</button>
 									</form>
                                 </td>

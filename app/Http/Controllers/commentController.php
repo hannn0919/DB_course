@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\comment;
+use Auth;
 use Illuminate\Http\Request;
 
 class commentController extends Controller
@@ -49,7 +50,7 @@ class commentController extends Controller
      */
     public function destroy($id)
     {
-        $post=comment::where('ExpNo','=',$id);
+        $post=comment::where('CommentNo','=',$id);
         $post->delete();
         return redirect()->action('Controller@personal',@Auth::user()->name);
     }

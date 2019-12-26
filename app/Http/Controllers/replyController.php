@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\reply;
+use Auth;
 use Illuminate\Http\Request;
 
 class replyController extends Controller
