@@ -33,7 +33,7 @@
 							</div>
 						</div>
 						<div class="text-right">
-							<button type="submit" class="btn btn-outline-info">確認變更</button>
+							<button type="submit" class="btn btn-dark">確認變更</button>
 						</div>
 					</form>
 				</div>

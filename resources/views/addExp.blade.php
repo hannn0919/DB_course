@@ -44,7 +44,7 @@
 				<div class="form-group row">
 					<label for="score" class="col-sm-2 col-form-label">* 推薦指數</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="Score" required>
+						<input type="number" class="form-control" name="Score"  min="1" max="5" placeholder="1 ~ 5顆星" required>
 					</div>
 				</div>
 

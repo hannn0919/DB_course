@@ -25,6 +25,9 @@
         <!-- Styles -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+        <!--Icon_fontawesome-->
+        <script src="https://kit.fontawesome.com/b88fff3b41.js" crossorigin="anonymous"></script>
+
         <style type = "text/css">
             body {
                 padding-top: 0px;
