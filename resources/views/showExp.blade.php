@@ -15,27 +15,27 @@
 			<small class="float-right">作者: {{$user_array[$exp[0]->Account]}}</small><br>
 			<div>
 			  <div class="form-group row">
-				<label class="col-sm-2 col-form-label">* 課號</label>
+				<label class="col-sm-2 col-form-label">課號</label>
 				<div class="col-sm-10">{{$exp[0]->CourseNo}}</div>
 			  </div>
 			  <div class="form-group row">
-				<label  class="col-sm-2 col-form-label">* 課名</label>
+				<label  class="col-sm-2 col-form-label">課名</label>
 				<div class="col-sm-10">{{$course[0]->CourseTitle}}</div>
 			  </div>
 			  <div class="form-group row">
-				<label  class="col-sm-2 col-form-label">* 開課系所</label>
+				<label  class="col-sm-2 col-form-label">開課系所</label>
 				<div class="col-sm-10">{{$course[0]->Department}}</div>
 			  </div>
 			  <div class="form-group row">
-				<label  class="col-sm-2 col-form-label">* 授課老師</label>
+				<label  class="col-sm-2 col-form-label">授課老師</label>
 				<div class="col-sm-10">{{$course[0]->Instructor}}</div>
 			  </div>
 			  <div class="form-group row">
-				<label class="col-sm-2 col-form-label">* 開課年度</label>
+				<label class="col-sm-2 col-form-label">開課年度</label>
 				<div class="col-sm-10">{{$exp[0]->Semester}}</div>
 			  </div>
 			  <div class="form-group row">
-				<label  class="col-sm-2 col-form-label">* 推薦指數</label>
+				<label  class="col-sm-2 col-form-label">推薦指數</label>
 				<div class="col-sm-10">{{$exp[0]->Score}}</div>
 			  </div>
 			</div>
