@@ -36,8 +36,9 @@ class expController extends Controller
         $post->Outline=$request->Outline;
         $post->Additional=$request->Additional;
         $post->save();
-        return redirect()->back();
+        return redirect()->action('Controller@course',$request->CourseNo);
     }
+
     /**
      * Display the specified resource.
      *

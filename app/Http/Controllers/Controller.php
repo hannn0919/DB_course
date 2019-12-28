@@ -29,8 +29,8 @@ class Controller extends BaseController
     public function adminPersonal()
     {   
         $name =Auth::user()->name;
-        $exp = DB::select('select exp.expNo,course.CourseTitle from exp join course on exp.CourseNo=course.CourseNo order by expNo');
-        $comment = DB::select('select comment.CommentNo,course.CourseTitle from comment join course on comment.CourseNo=course.CourseNo order by CommentNo');
+        $exp = DB::select('select exp.expNo,course.CourseTitle,course.CourseNo from exp join course on exp.CourseNo=course.CourseNo order by expNo');
+        $comment = DB::select('select comment.CommentNo,course.CourseTitle,course.CourseNo from comment join course on comment.CourseNo=course.CourseNo order by CommentNo');
         $data = array('exp' => $exp,
                       'comment' => $comment,
                 );

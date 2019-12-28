@@ -54,19 +54,19 @@
 				<div class="form-group row">
 					<label for="evaluation" class="col-sm-2 col-form-label">評分方式</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" name="Evaluation"></textarea>
+						<textarea type="text" class="form-control" name="Evaluation" maxlength = "255"></textarea>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="outline" class="col-sm-2 col-form-label">考試與作業</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" name="Outline"></textarea>
+						<textarea type="text" class="form-control" name="Outline" maxlength = "255"></textarea>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="additional" class="col-sm-2 col-form-label">其他</label>
+					<label for="additional" class="col-sm-2 col-form-label">心得</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" name="Additional" rows="5"></textarea>
+						<textarea type="text" class="form-control" name="Additional" rows="5" maxlength = "255"></textarea>
 					</div>
 				</div>
 

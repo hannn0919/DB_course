@@ -54,23 +54,22 @@
 				<div class="form-group row">
 					<label for="evaluation" class="col-sm-2 col-form-label">評分方式</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" name="Evaluation" >{{$exp[0]->Evaluation}}</textarea>
+						<textarea type="text" class="form-control" name="Evaluation" maxlength = "255" >{{$exp[0]->Evaluation}}</textarea>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="outline" class="col-sm-2 col-form-label">考試與作業</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" name="Outline" >{{$exp[0]->Outline}}</textarea>
+						<textarea type="text" class="form-control" name="Outline" maxlength = "255" >{{$exp[0]->Outline}}</textarea>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="Additional" class="col-sm-2 col-form-label">其他</label>
+					<label for="Additional" class="col-sm-2 col-form-label">心得</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" name="Additional" rows="5" >{{$exp[0]->Additional}}</textarea>
+						<textarea type="text" class="form-control" name="Additional" rows="5" maxlength = "255" >{{$exp[0]->Additional}}</textarea>
 					</div>
 				</div>
-
-				<button class="btn btn-outline-info btn-block" type="submit">送出心得</button>
+				<button class="btn btn-outline-info btn-block" type="submit">確認編輯</button>
 			</form>
 		</div>
 	</div>

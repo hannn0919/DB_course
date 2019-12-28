@@ -48,7 +48,7 @@
 						<thead>
 						<tr class="bg-info">
 							<th scope="col">課程名稱</th>
-							<th scope="col">心得列表</th>
+							<th scope="col">心得編號</th>
 							<th scope="col">操作</th>
 						</tr>
 						</thead>
@@ -63,7 +63,9 @@
 								 	<form action="{{ route('exp.destroy', $d->expNo) }}" method="POST">
 										@csrf
 										@method('DELETE')
-										<a href="{{route('editExp',$d->expNo)}}" class="btn btn-link">編輯</a> 
+										@if( @Auth::user()->name != "admin" )
+											<a href="{{route('editExp',$d->expNo)}}" class="btn btn-link">編輯</a>
+										@endif 
 										<button type="submit" class="btn btn-link">刪除</button>
 									</form>
                                 </td>
@@ -83,7 +85,7 @@
 						<thead>
 						<tr class="bg-info">
 							<th scope="col">課程名稱</th>
-							<th scope="col">問題列表</th>
+							<th scope="col">問題編號</th>
 							<th scope="col">操作</th>
 						</tr>
 						</thead>
@@ -99,7 +101,6 @@
 									<form action="{{ route('comment.destroy', $d->CommentNo) }}" method="POST">
 										@csrf
 										@method('DELETE')
-										<a href="#" class="btn btn-link">編輯</a> 
 										<button type="submit" class="btn btn-link">刪除</button>
 									</form>
                                 </td>

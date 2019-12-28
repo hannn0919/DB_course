@@ -10,7 +10,9 @@
             <div class="card" style="height:85vh;">
                 <div class="card-header bg-white font-weight-bold text-center" style="height: auto;">搜尋結果</div>
                 <div class="card-body overflow-auto" >
-
+                    @if( count($details) < 1)
+                        <div>查無結果</div>
+                    @else
                         <table class="table table-condensed table-hover text-center">
                                 <thead>
                                 <tr class="thead-dark">
@@ -22,6 +24,7 @@
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white">
+
                                     @foreach($details as $d)
                                     <tr onclick="window.location='/course/{{$d->CourseNo}}'">
                                         <th scope="row">{{$d->CourseNo}}</th>
@@ -55,7 +58,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
+                    @endif
                 </div>
             </div>
         </div>

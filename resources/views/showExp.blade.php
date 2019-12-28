@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') 發表心得 @endsection
+@section('title') 心得 @endsection
 
 @section('content')
 	<br>

@@ -133,7 +133,7 @@
                   <div class="row justify-content-center align-items-center" style="height: 7vh;">
                     <h3 class="col-3 font-weight-bolder text-truncate">{{$array_data['Course'][0]->CourseNo}}</h3>
                     <h3 class="col-7 font-weight-bolder text-truncate">{{$array_data['Course'][0]->CourseTitle}}</h3>
-                    <button type="button" class="h-50 col-auto btn btn-outline-dark"  data-toggle="modal" data-target="#commentModal">提問</button>
+                    <button type="button" class="col-auto btn btn-outline-dark"  data-toggle="modal" data-target="#commentModal">提問</button>
 
                       <!-- Modal -->
                       <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
@@ -155,7 +155,7 @@
 								<br>
 								<div class="form-group">
 									<label for="message-text" class="col-form-label">問題描述:</label>
-									<textarea class="form-control" rows="5" id="message-text" name = "Comment"></textarea>
+									<textarea class="form-control" rows="5" id="message-text" name = "Comment" maxlength = "255" required></textarea>
 								</div>
 								
 								<button type="submit" class="btn btn-outline-info btn-block">送出提問</button>
@@ -183,6 +183,9 @@
 						</div>
 						<div id="tab01" class="tab-contents" style = "height:75vh;" >
 							<br>
+								@if( count($array_data['exps']) < 1)
+									<div>尚無心得</div>
+								@endif
 								@foreach($array_data['exps'] as $key => $d)
 									<div class ="card">
 										<div class="card-body">
@@ -198,7 +201,11 @@
 									<br>
 								@endforeach
 						</div>  
-						<div id="tab02" class="tab-contents" style = "height:76vh;" >                  
+						<div id="tab02" class="tab-contents" style = "height:76vh;" > 
+							<br>
+							@if( count($array_data['comments']) < 1)
+								<div>尚無問題</div>
+							@endif                 
 							@foreach($array_data['comments'] as $key => $d)
 								<div class = "card">
 									<div class = "card-body justify-content-center align-items-center">
@@ -237,7 +244,7 @@
 														<br>
 														<div class="form-group">
 															<label for="reply-text" class="col-form-label">您的回覆:</label>
-															<textarea class="form-control" rows="5" id="reply-text" name = "Content" ></textarea>
+															<textarea class="form-control" rows="5" id="reply-text" name = "Content" maxlength = "255" required></textarea>
 														</div>
 														<button type="submit" class="btn btn-outline-info btn-block">送出回答</button>
 													</div>
