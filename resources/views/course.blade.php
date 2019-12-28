@@ -70,17 +70,6 @@
       margin-top: 0;
     }
   }
-  .footer{
-		z-index: 1;
-      position: absolute;
-      left: 300px;
-      bottom: 50px;
-      background-color:none;
-  }
-  .footer button {
-		height: 100%;
-		width: 100%;
-	}
 </style>
 
 <script>
@@ -120,12 +109,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-	<div class ="footer">
+	<!-- <div class ="footer">
 		<form method="get" action="{{route('exp.index')}}">
 			<input name="courseNo" type="hidden" value = "{{$array_data['Course'][0]->CourseNo}}">	
 			<button class="btn btn-secondary" type="submit">撰寫心得<i class="fa fa-plus"></i></button>
 		</form>
-	</div>
+	</div> -->
     @include('layouts.sidebar')
         <div class = "col-md-8 col-lg-8 col-sm-8 col-xs-12">
             <br>
@@ -181,7 +170,7 @@
 								<option value="#tab02">問題</option>
 							</select>
 						</div>
-						<div id="tab01" class="tab-contents" style = "height:75vh;" >
+						<div id="tab01" class="tab-contents" style = "height:73vh;" >
 							<br>
 								@if( count($array_data['exps']) < 1)
 									<div>尚無心得</div>
@@ -201,7 +190,7 @@
 									<br>
 								@endforeach
 						</div>  
-						<div id="tab02" class="tab-contents" style = "height:76vh;" > 
+						<div id="tab02" class="tab-contents" style = "height:73vh;" > 
 							<br>
 							@if( count($array_data['comments']) < 1)
 								<div>尚無問題</div>
