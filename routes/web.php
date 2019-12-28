@@ -23,5 +23,6 @@ Route::get('/course/{courseNo}','Controller@course')->name('course');
 
 Route::resource('exp','expController');
 Route::resource('comment','commentController');
+Route::resource('reply','replyController');
 
 Route::get('/editExp/{expNo}', 'Controller@editExp')->name('editExp');
