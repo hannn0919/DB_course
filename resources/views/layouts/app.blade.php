@@ -82,7 +82,11 @@
                                 {{Auth::user()->name}}
                             </a> 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @if(Auth::user()->name='admin')
+                                <a class="dropdown-item" href="{{route('adminPersonal.show',@Auth::user()->name)}}">個人設定</a>
+                                @else
                                 <a class="dropdown-item" href="{{route('personal.show',@Auth::user()->name)}}">個人設定</a>
+                                @endif
                                 <a class="dropdown-item" href="{{route('logout')}}">登出</a>
                             </div>
                         </li>

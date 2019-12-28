@@ -12,6 +12,7 @@ Route::get('/logout', function(){
 });
 
 Route::get('/personal/{name}','Controller@personal')->name('personal.show');
+Route::get('/personal/{name}','Controller@adminPersonal')->name('adminPersonal.show');
 
 Route::post('/personal/{name}/resetPassword','Controller@resetPassword')->name('resetPassword');
 
