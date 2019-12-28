@@ -17,7 +17,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function personal($name)
     {   
-        $name =Auth::user()->name;
+        //$name =Auth::user()->name;
         $exp = DB::select('select exp.expNo,course.CourseTitle from exp join course on exp.Account="'. Auth::user()->email.'" and exp.CourseNo=course.CourseNo');
         $comment = DB::select('select comment.CommentNo,course.CourseTitle from comment join course on comment.Account="'. Auth::user()->email.'" and comment.CourseNo=course.CourseNo');
         $data = array('exp' => $exp,
@@ -26,7 +26,7 @@ class Controller extends BaseController
         return view('personal', ['name'=>$name,'array_data' => $data]);
     }
 
-    public function adminPersonal($name)
+    public function adminPersonal()
     {   
         $name =Auth::user()->name;
         $exp = DB::select('select exp.expNo,course.CourseTitle from exp join course on exp.CourseNo=course.CourseNo order by expNo');
@@ -63,12 +63,17 @@ class Controller extends BaseController
         foreach($comments as $k=>$c){
             $reply_array[$c->CommentNo] = DB::select('select distinct reply.* from reply where reply.CommentNo="'.$c->CommentNo.'"');
         }
+        $users = DB::select('select distinct users.* from users');
+        $user_array = array();
+        foreach($users as $k=>$c){
+            $user_array[$c->email] = $c->name;
+        }
         $data = array(
                     'Course' => $Course,
                     'CourseNo' => $courseNo,
                     'exps' => $exps,
                     'comments'=>$comments);
-        return view('course', ['array_data' => $data, 'reply_array'=>$reply_array]);
+        return view('course', ['array_data' => $data, 'reply_array'=>$reply_array, 'user_array' => $user_array]);
     }
 
     public function editExp($expNo)

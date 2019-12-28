@@ -49,7 +49,12 @@ class expController extends Controller
     {
         $exp=exp::where('ExpNo','=',$id)->get();
         $course=DB::select('select course.* from course where course.CourseNo="'.$exp[0]->CourseNo.'"');
-        return view('showExp',['exp'=>$exp,'course'=>$course]);
+        $users = DB::select('select distinct users.* from users');
+        $user_array = array();
+        foreach($users as $k=>$c){
+            $user_array[$c->email] = $c->name;
+        }
+        return view('showExp',['exp'=>$exp,'course'=>$course, 'user_array' => $user_array]);
     }
 
     /**

@@ -139,29 +139,31 @@
                       <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
-                            <div class="modal-header bg-info text-white">
-                              <h5 class="modal-title " id="commentModalLabel">課程提問</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body text-left">
-                              <div>課號：{{$array_data['Course'][0]->CourseNo}}</div>
-                              <br>
-                              <div>課程名稱：{{$array_data['Course'][0]->CourseTitle}}</div>
-                              <br>
-                              <div class="form-group">
-                                <label for="message-text" class="col-form-label">問題描述:</label>
-                                <textarea class="form-control" rows="5" id="message-text"></textarea>
-                              </div>
-                              
-                              <button type="button" class="btn btn-outline-info btn-block">送出提問</button>
-                            </div>
-                          
+						  	<form method='post' action="{{route('comment.store')}}">
+							  	{{ csrf_field() }}
+								<div class="modal-header bg-info text-white">
+								<h5 class="modal-title " id="commentModalLabel">課程提問</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body text-left">
+								<div>課號：{{$array_data['Course'][0]->CourseNo}}</div>
+								<input type = "hidden" value = "{{$array_data['Course'][0]->CourseNo}}" name = "CourseNo">
+								<br>
+								<div>課程名稱：{{$array_data['Course'][0]->CourseTitle}}</div>
+								<br>
+								<div class="form-group">
+									<label for="message-text" class="col-form-label">問題描述:</label>
+									<textarea class="form-control" rows="5" id="message-text" name = "Comment"></textarea>
+								</div>
+								
+								<button type="submit" class="btn btn-outline-info btn-block">送出提問</button>
+								</div>
+							</form>	
                           </div>
                         </div>
                       </div>
-
                   </div>
                 </div>
 
@@ -179,82 +181,76 @@
 								<option value="#tab02">問題</option>
 							</select>
 						</div>
-            <div id="tab01" class="tab-contents" style = "height:75vh;" >
-                <br>
+						<div id="tab01" class="tab-contents" style = "height:75vh;" >
+							<br>
 								@foreach($array_data['exps'] as $key => $d)
 									<div class ="card">
 										<div class="card-body">
-                      <h2 class="d-inline text-black"><i class="fas fa-star" style="color:#FFD306;"></i> x {{$d->Score}}</h2>
-                      <h5 class="d-inline float-right text-truncate">{{$d->Account}}</h5>
-                      <hr>
+											<h2 class="d-inline text-black"><i class="fas fa-star" style="color:#FFD306;"></i> x {{$d->Score}}</h2>
+											<h5 class="d-inline float-right text-truncate">{{$user_array[$d->Account]}}</h5>
+											<hr>
 											<p class="text-black text-truncate">{{$d->Additional}}</p>
-                    </div>
-                    <div class="card-footer">
+										</div>
+										<div class="card-footer">
 											<a class="float-right"href="{{route('exp.show', $d->ExpNo)}}">查看更多</a>
-                    </div>
-                  </div>
-                  <br>
-								@endforeach
-
-						</div>  
-						
-						<div id="tab02" class="tab-contents" style = "height:76vh;" >                  
-								@foreach($array_data['comments'] as $key => $d)
-									<div class = "card">
-										<div class = "card-body justify-content-center align-items-center">
-                      <div class="row">
-                        <p class="d-inline col-3">{{$d->Account}} : </p>
-                        <h5 class="d-inline col text-truncate">{{$d->Comment}}</h5>
-                        <div class="row-2 d-flex flex-column">
-                          <button class="h-50 btn btn-outline-secondary float-right" type="button" data-toggle="modal" data-target="#replyModal">回答問題</button>
-                          <button class="h-50 btn btn-secondary float-right" type="button" data-toggle="collapse" data-target="#{{$d->CommentNo}}" aria-expanded="false" aria-controls="{{$d->CommentNo}}">查看回覆</button>
-                        </div>
-                      </div>
-
-                      <div class="collapse" id="{{$d->CommentNo}}">
-                        <br>
-                        <hr>
-                        @foreach($reply_array[$d->CommentNo] as $r)
-                          <p class="text-light bg-dark"> {{$r->Account}} : {{$r->Content}}</p>
-                        @endforeach
-                      </div>
-
-                      <!-- Modal -->
-                      <div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header bg-info text-white">
-                              <h5 class="modal-title " id="replyModalLabel">問題回覆</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body text-left">
-                              <div>{{$d->Account}} 問：</div>
-                              <br>
-                              <div>{{$d->Comment}}</div>
-                              <br>
-                              <div class="form-group">
-                                <label for="reply-text" class="col-form-label">您的回覆:</label>
-                                <textarea class="form-control" rows="5" id="reply-text"></textarea>
-                              </div>
-                              
-                              <button type="button" class="btn btn-outline-info btn-block">送出回答</button>
-                            </div>
-                          
-                          </div>
-                        </div>
-                      </div>
-
-
 										</div>
 									</div>
+									<br>
 								@endforeach
+						</div>  
+						<div id="tab02" class="tab-contents" style = "height:76vh;" >                  
+							@foreach($array_data['comments'] as $key => $d)
+								<div class = "card">
+									<div class = "card-body justify-content-center align-items-center">
+										<div class="row">
+											<p class="d-inline col-3">{{$user_array[$d->Account]}} : </p>
+											<h5 class="d-inline col text-truncate">{{$d->Comment}}</h5>
+											<div class="row-2 d-flex flex-column">
+											<button class="h-50 btn btn-outline-secondary float-right" type="button" data-toggle="modal" data-target="#replyModal">回答問題</button>
+											<button class="h-50 btn btn-secondary float-right" type="button" data-toggle="collapse" data-target="#{{$d->CommentNo}}" aria-expanded="false" aria-controls="{{$d->CommentNo}}">查看回覆</button>
+											</div>
+										</div>
+										<div class="collapse" id="{{$d->CommentNo}}">
+											<br>
+											<hr>
+											@foreach($reply_array[$d->CommentNo] as $r)
+											<p class="text-light bg-dark"> {{$user_array[$r->Account]}} : {{$r->Content}}</p>
+											@endforeach
+										</div>
+										<!-- Modal -->
+										<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+											<div class="modal-content">
+												<div class="modal-header bg-info text-white">
+													<h5 class="modal-title " id="replyModalLabel">問題回覆</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<form method='post' action="{{route('reply.store')}}">
+												{{ csrf_field() }}
+													<div class="modal-body text-left">
+														<div>{{$user_array[$d->Account]}} 問：</div>
+														<br>
+														<div>{{$d->Comment}}</div>
+														<input type = "hidden" value = "{{$d->CommentNo}}" name = "CommentNo">
+														<br>
+														<div class="form-group">
+															<label for="reply-text" class="col-form-label">您的回覆:</label>
+															<textarea class="form-control" rows="5" id="reply-text" name = "Content" ></textarea>
+														</div>
+														<button type="submit" class="btn btn-outline-info btn-block">送出回答</button>
+													</div>
+												</form>
+											</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							@endforeach
 						</div>
-						
 					</div>
                 </div>
-            
         </div>
     </div>
 </div>

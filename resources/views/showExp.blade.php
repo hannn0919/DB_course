@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<div class="card-body" style="height: 79vh; overflow:auto">
-			<small class="float-right">作者: {{$exp[0]->Account}}</small>
+			<small class="float-right">作者: {{$user_array[$exp[0]->Account]}}</small>
 			<div>
 				<h3>課號：{{$exp[0]->CourseNo}}</h3><br>
 				<h3>課名：{{$course[0]->CourseTitle}}</h3><br>

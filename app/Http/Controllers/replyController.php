@@ -15,7 +15,7 @@ class replyController extends Controller
         $post->Account=Auth::user()->email;
         $post->Content=$request->Content;
         $post->save();
-        return redirect()->action('Controller@personal',@Auth::user()->name);
+        return redirect()->back();
     }
 
     public function update(Request $request, $id)
