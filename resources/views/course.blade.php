@@ -206,7 +206,7 @@
 											<p class="d-inline col-3">{{$user_array[$d->Account]}} : </p>
 											<h5 class="d-inline col text-truncate">{{$d->Comment}}</h5>
 											<div class="row-2 d-flex flex-column">
-											<button class="h-50 btn btn-outline-secondary float-right" type="button" data-toggle="modal" data-target="#replyModal">回答問題</button>
+											<button class="h-50 btn btn-outline-secondary float-right" type="button" data-toggle="modal" data-target="#modal{{$d->CommentNo}}">回答問題</button>
 											<button class="h-50 btn btn-secondary float-right" type="button" data-toggle="collapse" data-target="#{{$d->CommentNo}}" aria-expanded="false" aria-controls="{{$d->CommentNo}}">查看回覆</button>
 											</div>
 										</div>
@@ -218,7 +218,7 @@
 											@endforeach
 										</div>
 										<!-- Modal -->
-										<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
+										<div class="modal fade" id="modal{{$d->CommentNo}}" tabindex="-1" role="dialog" aria-labelledby="{{$d->CommentNo}}Label" aria-hidden="true">
 											<div class="modal-dialog modal-dialog-centered" role="document">
 											<div class="modal-content">
 												<div class="modal-header bg-info text-white">

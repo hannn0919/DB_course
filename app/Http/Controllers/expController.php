@@ -36,9 +36,8 @@ class expController extends Controller
         $post->Outline=$request->Outline;
         $post->Additional=$request->Additional;
         $post->save();
-        return redirect()->action('Controller@personal',@Auth::user()->name);
+        return redirect()->back();
     }
-
     /**
      * Display the specified resource.
      *
@@ -74,7 +73,12 @@ class expController extends Controller
         $post->save();
         $exp=exp::where('ExpNo','=',$post->ExpNo)->get();
         $course=DB::select('select course.* from course where course.CourseNo="'.$exp[0]->CourseNo.'"');
-        return view('showExp',['exp'=>$exp,'course'=>$course]);
+        $users = DB::select('select distinct users.* from users');
+        $user_array = array();
+        foreach($users as $k=>$c){
+            $user_array[$c->email] = $c->name;
+        }
+        return view('showExp',['exp'=>$exp,'course'=>$course, 'user_array' => $user_array]);
     }
 
     /**

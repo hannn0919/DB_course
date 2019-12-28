@@ -55,7 +55,9 @@
 						<tbody class="bg-white">
                             @foreach($array_data['exp'] as $key=>$d)
                             <tr>
-								<th scope="row">{{$d->CourseTitle}}</th>
+								<th scope="row">
+									<a href="{{route('course', $d->CourseNo)}}">{{$d->CourseTitle}}</a>
+								</th>
 								<td>{{$d->expNo}}</td>
 								<td>
 								 	<form action="{{ route('exp.destroy', $d->expNo) }}" method="POST">
@@ -89,7 +91,9 @@
 							<tr>
                             @foreach($array_data['comment'] as $key=>$d)
                             <tr>
-								<th scope="row">{{$d->CourseTitle}}</th>
+								<th scope="row">
+									<a href="{{route('course', $d->CourseNo)}}">{{$d->CourseTitle}}</a>
+								</th>
 								<td>{{$d->CommentNo}}</td>
 								<td>
 									<form action="{{ route('comment.destroy', $d->CommentNo) }}" method="POST">
