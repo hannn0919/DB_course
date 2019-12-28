@@ -59,7 +59,7 @@ class Controller extends BaseController
         $Course = DB::select('select course.* from course where course.CourseNo="'.$courseNo.'"');
         $exps = DB::select('select distinct exp.* from exp join course on exp.CourseNo="'.$courseNo.'"');
         $comments = DB::select('select distinct comment.* from comment join course on comment.CourseNo="'.$courseNo.'"');
-        $comments_array = array();
+        $reply_array = array();
         foreach($comments as $k=>$c){
             $reply_array[$c->CommentNo] = DB::select('select distinct reply.* from reply where reply.CommentNo="'.$c->CommentNo.'"');
         }
