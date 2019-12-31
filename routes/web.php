@@ -26,3 +26,8 @@ Route::resource('comment','commentController');
 Route::resource('reply','replyController');
 
 Route::get('/editExp/{expNo}', 'Controller@editExp')->name('editExp');
+
+
+Route::get('download',function(){
+    return response()->download(realpath(base_path('public')).'/推課海大_期末報告.pptx', '推課海大_期末報告.pptx');
+});
